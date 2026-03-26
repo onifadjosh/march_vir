@@ -60,14 +60,15 @@
 
 import React from "react";
 import { useState } from "react";
+import Button from "./components/Button";
+import AddUser from "./components/AddUser";
+import DisplayUser from "./components/DisplayUser";
 
 const App = () => {
-  const [firstName, setfirstName] = useState("");
-  const [lastName, setlastName] = useState("");
-  const [email, setemail] = useState("");
-  const [password, setpassword] = useState("");
+ 
 
   const [allUsers, setallUsers] = useState([]);
+ 
 
   // const handleInput=(event)=>{
   //   // console.log("this is working");
@@ -76,13 +77,18 @@ const App = () => {
   //   setfirstName(event.target.value)
   // }
 
-  const submitUser = () => {
-    let user = {
-      firstName,
-      lastName,
-      email,
-      password,
-    };
+  const shoutName=()=>{
+    alert("sade is here")
+  }
+
+  const submitUser = (user) => {
+    // let user = 
+    // {
+    //   firstName,
+    //   lastName,
+    //   email,
+    //   password,
+    // };
 
     console.log(user);
     let fruits = ["orange", "banana", "mango"];
@@ -104,6 +110,10 @@ const App = () => {
     setallUsers(newAllUsers)
   }
 
+  // [
+  //   {},{},{},{}
+  // ]
+
   const editUser=(index, user)=>{
     let newAllUsers = [...allUsers]
 
@@ -113,57 +123,17 @@ const App = () => {
   }
   return (
     <div>
-      <input
-        type="text"
-        placeholder="first name"
-        onChange={(e) => setfirstName(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="last name"
-        onChange={(e) => setlastName(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="email"
-        onChange={(e) => setemail(e.target.value)}
-      />
-
-      <input
-        type="text"
-        placeholder="password"
-        onChange={(e) => setpassword(e.target.value)}
-      />
-
-      <button onClick={submitUser}>submit</button>
-
+      
+      <AddUser submitUser={submitUser}/>
       <hr />
+  
 
-     <div className="d-flex flex-wrap gap-3">
-     {allUsers.map((user, index) => (
-        <div className="card" style={{ width: "18rem" }} key={index}>
-          <div className="card-body">
-            <h5 className="card-title">
-              {user.firstName + " " + user.lastName}
-            </h5>
-            <h6 className="card-subtitle mb-2 text-body-secondary">
-             {user.email}
-            </h6>
-            <p className="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card’s content.
-            </p>
-            <div className="d-flex gap-2">
-              <button className="btn btn-dark" onClick={()=>deleteUser(index)}>Delete</button>
+     <DisplayUser allUsers={allUsers} deleteUser={deleteUser} editUser={editUser}/>
 
-              <button className="btn btn-dark">Edit</button>
-            </div>
-          </div>
-        </div>
-      ))}
-     </div>
+
+<Button title="stop" color="btn-danger" func={shoutName}/>
+<Button title="Go" color="btn-success"/>
+<Button title="Wait" color="btn-warning"/>
     </div>
   );
 };

@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Button = () => {
+const Button = ({title, color, func}) => {
+  // console.log(props);
+  
     const shout=(name)=>{
         alert(`You have bought this item ${name}`)
     }
   return (
-  <button className='btn btn-dark' onClick={()=>shout("Pamilerin")}>Buy now</button>
+  <button className={`btn ${color}`} onClick={func}>{title}</button>
   )
 }
 
