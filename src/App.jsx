@@ -58,84 +58,135 @@
 
 // export default App;
 
-import React from "react";
-import { useState } from "react";
-import Button from "./components/Button";
-import AddUser from "./components/AddUser";
-import DisplayUser from "./components/DisplayUser";
 
-const App = () => {
+
+
+// import React from "react";
+// import { useState } from "react";
+// import Button from "./components/Button";
+// import AddUser from "./components/AddUser";
+// import DisplayUser from "./components/DisplayUser";
+
+// const App = () => {
  
 
-  const [allUsers, setallUsers] = useState([]);
+//   const [allUsers, setallUsers] = useState([]);
  
 
-  // const handleInput=(event)=>{
-  //   // console.log("this is working");
-  //   console.log(event.target.value);
+//   // const handleInput=(event)=>{
+//   //   // console.log("this is working");
+//   //   console.log(event.target.value);
 
-  //   setfirstName(event.target.value)
-  // }
+//   //   setfirstName(event.target.value)
+//   // }
 
-  const shoutName=()=>{
-    alert("sade is here")
-  }
+//   const shoutName=()=>{
+//     alert("sade is here")
+//   }
 
-  const submitUser = (user) => {
-    // let user = 
-    // {
-    //   firstName,
-    //   lastName,
-    //   email,
-    //   password,
-    // };
+//   const submitUser = (user) => {
+//     // let user = 
+//     // {
+//     //   firstName,
+//     //   lastName,
+//     //   email,
+//     //   password,
+//     // };
 
-    console.log(user);
-    let fruits = ["orange", "banana", "mango"];
-    let newFruits = [...fruits, "guava", "watermelon"];
+//     console.log(user);
+//     let fruits = ["orange", "banana", "mango"];
+//     let newFruits = [...fruits, "guava", "watermelon"];
 
-    console.log(newFruits);
+//     console.log(newFruits);
 
-    let newAllUsers = [...allUsers, user];
+//     let newAllUsers = [...allUsers, user];
 
-    setallUsers(newAllUsers);
-  };
+//     setallUsers(newAllUsers);
+//   };
 
 
-  const deleteUser=(index)=>{
-    let newAllUsers = [...allUsers]
+//   const deleteUser=(index)=>{
+//     let newAllUsers = [...allUsers]
 
-    newAllUsers.splice(index,1)
+//     newAllUsers.splice(index,1)
 
-    setallUsers(newAllUsers)
-  }
+//     setallUsers(newAllUsers)
+//   }
 
-  // [
-  //   {},{},{},{}
-  // ]
+//   // [
+//   //   {},{},{},{}
+//   // ]
 
-  const editUser=(index, user)=>{
-    let newAllUsers = [...allUsers]
+//   const editUser=(index, user)=>{
+//     let newAllUsers = [...allUsers]
 
-    newAllUsers.splice(index,1, user)
+//     newAllUsers.splice(index,1, user)
 
-    setallUsers(newAllUsers)
-  }
-  return (
-    <div>
+//     setallUsers(newAllUsers)
+//   }
+//   return (
+//     <div>
       
-      <AddUser submitUser={submitUser}/>
-      <hr />
+//       <AddUser submitUser={submitUser}/>
+//       <hr />
   
 
-     <DisplayUser allUsers={allUsers} deleteUser={deleteUser} editUser={editUser}/>
+//      <DisplayUser allUsers={allUsers} deleteUser={deleteUser} editUser={editUser}/>
 
 
-<Button title="stop" color="btn-danger" func={shoutName}/>
-<Button title="Go" color="btn-success"/>
-<Button title="Wait" color="btn-warning"/>
+// <Button title="stop" color="btn-danger" func={shoutName}/>
+// <Button title="Go" color="btn-success"/>
+// <Button title="Wait" color="btn-warning"/>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+
+
+import React from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
+import About from './pages/About'
+import Home from './pages/Home'
+import Contact from './pages/Contact'
+import Navbar from './components/Navbar'
+import Notfound from './pages/Notfound'
+import Profile from './pages/Profile'
+import Layout from './pages/Layout'
+import Dashboard from './pages/Dashboard'
+import Effect from './pages/Effect'
+import Fetchh from './pages/Fetchh'
+
+const App = () => {
+  return (
+    <div>
+      {/* <Navbar/> */}
+      <Routes>
+          <Route index element={<Home/>}/>
+          <Route path='/about' element={<About/>}/>
+
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/effect' element={<Effect/>}/>
+          <Route path='/fetch' element={<Fetchh/>}/>
+
+
+        <Route path='/sp-contact' element={<Navigate to={"/contact"}/>}/>
+
+        {/* dynamic routing */}
+        <Route path='/profile/:username' element={<Profile person={"Kunle"}/>}/>
+
+        <Route path='/employee' element={<Layout/>}>
+          <Route path='/employee/dashboard' element={<Dashboard/>}/>
+        </Route>
+
+
+
+        <Route path="*" element={<Notfound/>}/>
+
+      </Routes>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
