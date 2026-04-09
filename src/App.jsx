@@ -157,6 +157,7 @@ import Layout from './pages/Layout'
 import Dashboard from './pages/Dashboard'
 import Effect from './pages/Effect'
 import Fetchh from './pages/Fetchh'
+import Formikk from './pages/Formikk'
 
 const App = () => {
   return (
@@ -169,6 +170,7 @@ const App = () => {
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/effect' element={<Effect/>}/>
           <Route path='/fetch' element={<Fetchh/>}/>
+          <Route path='/formikk' element={<Formikk/>}/>
 
 
         <Route path='/sp-contact' element={<Navigate to={"/contact"}/>}/>
