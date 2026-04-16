@@ -162,7 +162,7 @@ import Formikk from './pages/Formikk'
 const App = () => {
   return (
     <div>
-      {/* <Navbar/> */}
+      <Navbar/>
       <Routes>
           <Route index element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
