@@ -2,10 +2,12 @@ import axios from "axios";
 import { useFormik } from "formik";
 import { jwtDecode } from "jwt-decode";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 import * as yup from "yup";
 const Login = () => {
     const cookies = new Cookies()
+    let navigate = useNavigate()
   let formik = useFormik({
     initialValues: {
       email: "",
@@ -27,7 +29,7 @@ const Login = () => {
 
         cookies.set("token", response.data.data.token, {expires:new Date(decoded.exp*1000)})
 
-        
+        navigate('/')
       }
       } catch (error) {
         console.log(error);
