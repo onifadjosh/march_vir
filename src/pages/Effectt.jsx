@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
-const Effect = () => {
+const Effectt = () => {
     // const [first, setfirst] = useState(second)
     const [number, setnumber] = useState(0)
     const [name, setname] = useState("Josh")
@@ -35,4 +35,4 @@ const Effect = () => {
   )
 }
 
-export default Effect
+export default Effectt

@@ -155,10 +155,11 @@ import Notfound from './pages/Notfound'
 import Profile from './pages/Profile'
 import Layout from './pages/Layout'
 import Dashboard from './pages/Dashboard'
-import Effect from './pages/Effect'
+import Effect from './pages/Effectt'
 import Fetchh from './pages/Fetchh'
 import Formikk from './pages/Formikk'
 import Login from './pages/Login'
+import Effectt from './pages/Effectt'
 
 const App = () => {
   return (
@@ -170,7 +171,7 @@ const App = () => {
           <Route path='/login' element={<Login/>}/>
 
           <Route path='/contact' element={<Contact/>}/>
-          <Route path='/effect' element={<Effect/>}/>
+          <Route path='/effect' element={<Effectt/>}/>
           <Route path='/fetch' element={<Fetchh/>}/>
           <Route path='/formikk' element={<Formikk/>}/>
 
