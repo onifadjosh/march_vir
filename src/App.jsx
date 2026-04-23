@@ -158,6 +158,7 @@ import Dashboard from './pages/Dashboard'
 import Effect from './pages/Effect'
 import Fetchh from './pages/Fetchh'
 import Formikk from './pages/Formikk'
+import Login from './pages/Login'
 
 const App = () => {
   return (
@@ -166,6 +167,7 @@ const App = () => {
       <Routes>
           <Route index element={<Home/>}/>
           <Route path='/about' element={<About/>}/>
+          <Route path='/login' element={<Login/>}/>
 
           <Route path='/contact' element={<Contact/>}/>
           <Route path='/effect' element={<Effect/>}/>
