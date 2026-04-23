@@ -160,30 +160,37 @@ import Fetchh from './pages/Fetchh'
 import Formikk from './pages/Formikk'
 import Login from './pages/Login'
 import Effectt from './pages/Effectt'
+import AuthGuard from './auth/AuthGuard'
+import Cookies from 'universal-cookie'
 
 const App = () => {
+  const cookies = new Cookies()
+
+  const isAuth= cookies.get("token")
   return (
     <div>
       <Navbar/>
       <Routes>
-          <Route index element={<Home/>}/>
-          <Route path='/about' element={<About/>}/>
           <Route path='/login' element={<Login/>}/>
 
-          <Route path='/contact' element={<Contact/>}/>
-          <Route path='/effect' element={<Effectt/>}/>
-          <Route path='/fetch' element={<Fetchh/>}/>
-          <Route path='/formikk' element={<Formikk/>}/>
+          <Route element={<AuthGuard  isAuth={isAuth}/>}>
+          <Route index element={<Home/>}/>
+              <Route path='/about' element={<About/>}/>
+              <Route path='/contact' element={<Contact/>}/>
+              <Route path='/effect' element={<Effectt/>}/>
+              <Route path='/fetch' element={<Fetchh/>}/>
+              <Route path='/formikk' element={<Formikk/>}/>
 
 
-        <Route path='/sp-contact' element={<Navigate to={"/contact"}/>}/>
+            <Route path='/sp-contact' element={<Navigate to={"/contact"}/>}/>
 
-        {/* dynamic routing */}
-        <Route path='/profile/:username' element={<Profile person={"Kunle"}/>}/>
+            {/* dynamic routing */}
+            <Route path='/profile/:username' element={<Profile person={"Kunle"}/>}/>
 
-        <Route path='/employee' element={<Layout/>}>
-          <Route path='/employee/dashboard' element={<Dashboard/>}/>
-        </Route>
+            <Route path='/employee' element={<Layout/>}>
+              <Route path='/employee/dashboard' element={<Dashboard/>}/>
+            </Route>
+          </Route>
 
 
 
